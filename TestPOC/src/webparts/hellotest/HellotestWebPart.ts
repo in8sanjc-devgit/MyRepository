@@ -11,6 +11,7 @@ import * as strings from 'HellotestWebPartStrings';
 
 export interface IHellotestWebPartProps {
   description: string;
+  //commted
 }
 
 export default class HellotestWebPart extends BaseClientSideWebPart <IHellotestWebPartProps> {
