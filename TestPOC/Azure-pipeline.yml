@@ -1,4 +1,5 @@
 # Node.js with gulp
+
 # Build a Node.js project using the gulp task runner.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
@@ -20,12 +21,11 @@ steps:
 - script: |
     npm install
   displayName: 'Run npm install'
-
-- script: |
-    gulp clean
-    gulp bundle --ship
-    gulp package-solution --ship
-  displayName: 'Build and package the solution'
+- task: gulp@1
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'''
+    targets: 'gulp bundle --ship gulp package-solution --ship'
+    enableCodeCoverage: false
 
 # Publish Build Artifacts SPFx sppkg
 - task: PublishBuildArtifacts@1
