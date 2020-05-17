@@ -23,7 +23,7 @@ steps:
   displayName: 'Run npm install'
 - task: gulp@1
   inputs:
-    gulpFile: 'TestPOC/gulpfile.js'''
+    gulpFile: '$(Build.SourcesDirectory)'
     targets: 'gulp bundle --ship gulp package-solution --ship'
     enableCodeCoverage: false
 
