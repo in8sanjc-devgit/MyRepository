@@ -25,7 +25,6 @@ steps:
 
 - task: gulp@1
   inputs:
-    gulpFile: '$(Build.SourcesDirectory)/gulpfile.js'
     gulpjs: 'node_modules/gulp/bin/gulp.js'
     targets: 'gulp bundle --ship  gulp package-solution --ship'
     enableCodeCoverage: false
