@@ -25,15 +25,10 @@ steps:
 
 - task: gulp@1
   inputs:
-    gulpFile: 'TestPOC/gulpfile.js'
-    targets: 'gulp bundle --ship'
+    gulpFile: 'gulpfile.js'
+    targets: 'gulp bundle --ship  gulp package-solution --ship'
     enableCodeCoverage: false
 
-- task: gulp@1
-  inputs:
-    gulpFile: 'TestPOC/gulpfile.js'
-    targets: 'gulp package-solution --ship'
-    enableCodeCoverage: false
 
 # Publish Build Artifacts SPFx sppkg
 - task: PublishBuildArtifacts@1
