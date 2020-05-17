@@ -13,6 +13,7 @@ trigger:
       - dev
 
 steps:
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -21,10 +22,17 @@ steps:
 - script: |
     npm install
   displayName: 'Run npm install'
+
 - task: gulp@1
   inputs:
     gulpFile: 'TestPOC/gulpfile.js'
-    targets: 'gulp bundle --ship gulp package-solution --ship'
+    targets: 'gulp bundle --ship'
+    enableCodeCoverage: false
+
+- task: gulp@1
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'
+    targets: 'gulp package-solution --ship'
     enableCodeCoverage: false
 
 # Publish Build Artifacts SPFx sppkg
