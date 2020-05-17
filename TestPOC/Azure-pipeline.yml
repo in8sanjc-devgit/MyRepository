@@ -11,6 +11,7 @@ trigger:
   branches:
       include:
       - dev
+      - master
 
 steps:
 
@@ -25,10 +26,9 @@ steps:
 
 - task: gulp@1
   inputs:
-    gulpjs: 'node_modules/gulp/bin/gulp.js'
+    gulpFile: 'TestPOC/gulpfile.js'
     targets: 'gulp bundle --ship  gulp package-solution --ship'
-    enableCodeCoverage: false
-
+  
 
 # Publish Build Artifacts SPFx sppkg
 - task: PublishBuildArtifacts@1
