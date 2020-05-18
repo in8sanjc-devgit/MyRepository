@@ -52,7 +52,6 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'TestPOC'
     Contents: '**\*.sppkg'
     TargetFolder: '$(build.artifactstagingdirectory)/drop'
     
