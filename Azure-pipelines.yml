@@ -1,0 +1,62 @@
+# Node.js with gulp
+
+# Build a Node.js project using the gulp task runner.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+trigger:
+  branches:
+      include:
+      - dev
+      - master
+
+steps:
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- task: Npm@1
+  displayName: npm Install
+  inputs:
+    command: 'install'
+    workingDir: 'TestPOC'
+
+- task: Gulp@1
+  displayName: 'Gulp Build'
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'
+    workingDirectory: 'TestPOC'
+    targets: build 
+
+- task: Gulp@1
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'
+    targets: 'bundle'
+    workingDirectory: 'TestPOC'
+    gulpjs: 'node_modules/gulp/bin/gulp.js'
+    enableCodeCoverage: false
+    arguments: '--ship'
+
+- task: Gulp@0
+  displayName: 'gulp package-solution'
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'
+    workingDirectory: 'TestPOC'
+    targets: 'package-solution'
+    arguments: '--ship'
+
+- task: CopyFiles@2
+  inputs:
+    Contents: '**\*.sppkg'
+    TargetFolder: '$(build.artifactstagingdirectory)/drop'
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
