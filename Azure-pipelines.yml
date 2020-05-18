@@ -28,6 +28,8 @@ steps:
   inputs:
     gulpFile: 'TestPOC/gulpfile.js'
     targets: 'gulp bundle --ship  gulp package-solution --ship'
+    workingDirectory: 'TestPOC'
+    enableCodeCoverage: false
   
 
 # Publish Build Artifacts SPFx sppkg
