@@ -52,7 +52,6 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'sharepoint'
     Contents: '**\*.sppkg'
     TargetFolder: '$(build.artifactstagingdirectory)/drop'
 - task: PublishBuildArtifacts@1
