@@ -28,7 +28,6 @@ steps:
   inputs:
     gulpFile: 'TestPOC/gulpfile.js'
     targets: 'gulp bundle --ship  gulp package-solution --ship'
-    workingDirectory: 'TestPOC'
     gulpjs: 'node_modules/gulp/bin/gulp.js'
     enableCodeCoverage: false
   
