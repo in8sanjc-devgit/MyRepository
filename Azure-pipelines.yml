@@ -26,6 +26,13 @@ steps:
     command: 'install'
     workingDir: 'TestPOC'
 
+- task: Gulp@1
+  displayName: 'Gulp Build'
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'
+    workingDirectory: 'TestPOC'
+    targets: build 
+
 - task: gulp@1
   inputs:
     gulpFile: 'TestPOC/gulpfile.js'
