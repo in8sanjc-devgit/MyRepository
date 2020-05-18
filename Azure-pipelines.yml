@@ -32,15 +32,23 @@ steps:
     gulpFile: 'TestPOC/gulpfile.js'
     workingDirectory: 'TestPOC'
     targets: build 
-- task: gulp@1
+
+- task: Gulp@1
   inputs:
     gulpFile: 'TestPOC/gulpfile.js'
-    targets: 'gulp bundle --ship  gulp package-solution --ship'
+    targets: 'bundle'
     workingDirectory: 'TestPOC'
     gulpjs: 'node_modules/gulp/bin/gulp.js'
     enableCodeCoverage: false
+    arguments: '--ship'
 
-  
+- task: Gulp@0
+  displayName: 'gulp package-solution'
+  inputs:
+    gulpFile: 'TestPOC/gulpfile.js'
+    workingDirectory: 'TestPOC'
+    targets: 'package-solution'
+    arguments: '--ship'
 
 # Publish Build Artifacts SPFx sppkg
 - task: PublishBuildArtifacts@1
