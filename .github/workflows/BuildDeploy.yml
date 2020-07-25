@@ -7,7 +7,7 @@ name: 3DPrototype CICD
 on:
   push:
     branches:
-      - master
+      - master1
       - betarelease
 env:
   packageName: hello-test.sppkg
