@@ -47,10 +47,11 @@ jobs:
       working-directory: ./TestPOC
               
     - name: Bundle and package
+      working-directory: ./TestPOC
       run: |
         gulp bundle --ship
         gulp package-solution --ship
-        working-directory: ./TestPOC
+       
     
     - name: Upload Build Package
       uses: actions/upload-artifact@v2
