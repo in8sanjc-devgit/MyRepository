@@ -33,7 +33,6 @@ jobs:
     - name: Install dependencies
       working-directory: ./TestPOC
       run: |
-        CD 'TestPOC'
         npm install
     
                   
