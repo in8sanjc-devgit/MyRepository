@@ -31,10 +31,12 @@ jobs:
       uses: actions/setup-node@v1.4.2
       with:
         node-version: 10.x
-        working-directory: TestPOC  
+        
     - name: Install dependencies
-      run: npm ci
-      working-directory: TestPOC
+      working-directory: ./TestPOC
+      run: |
+         npm ci
+      
                 
     - name: Build solution
       run: gulp build
