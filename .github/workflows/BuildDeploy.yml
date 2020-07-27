@@ -35,18 +35,21 @@ jobs:
         
     - name: Install dependencies
       run: npm install -g
-                     
+      working-directory: ./TestPOC    
+                  
     - name: Build solution
       run: gulp build
-    
+      working-directory: ./TestPOC
       
     - name: Test solution
       run: npm test
+      working-directory: ./TestPOC
               
     - name: Bundle and package
       run: |
         gulp bundle --ship
         gulp package-solution --ship
+        working-directory: ./TestPOC
         working-directory: ./TestPOC
 
     - name: Upload Build Package
