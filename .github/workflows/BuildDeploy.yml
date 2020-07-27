@@ -15,7 +15,7 @@ env:
   
 defaults:
   run:
-    working-directory: ./TestPOC
+    working-directory: TestPOC
   # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -33,16 +33,14 @@ jobs:
       uses: actions/setup-node@v1.4.2
       with:
         node-version: 10.x
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-            ${{ runner.os }}-node-:
-    
+        working-directory: TestPOC  
     - name: Install dependencies
       run: npm ci
+      working-directory: TestPOC
                 
     - name: Build solution
       run: gulp build
+      working-directory: TestPOC
       
     - name: Test solution
       run: npm test
@@ -51,6 +49,7 @@ jobs:
       run: |
         gulp bundle --ship
         gulp package-solution --ship
+        working-directory: TestPOC
 
     - name: Upload Build Package
       uses: actions/upload-artifact@v2
