@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: packageFile
-        path: ${{ github.workspace }}/artifact/**/*
+        path: ${{ env.packageName }}
         
   deployPROD:
     runs-on: ubuntu-latest
