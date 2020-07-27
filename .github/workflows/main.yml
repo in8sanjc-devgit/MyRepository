@@ -57,7 +57,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: packageFile
-        path: sharepoint/solution/${{ env.packageName }}
+        path: ${{ github.workspace }}/artifact/**/*
         
   deployPROD:
     runs-on: ubuntu-latest
