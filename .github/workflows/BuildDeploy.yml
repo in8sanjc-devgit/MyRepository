@@ -34,8 +34,8 @@ jobs:
         node-version: 10.x
         
     - name: Install dependencies
-      run: npm install -g
-      working-directory: ./TestPOC    
+      run: cd TestPOC npm install -g
+    
                   
     - name: Build solution
       run: gulp build
