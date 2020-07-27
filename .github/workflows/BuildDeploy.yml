@@ -9,6 +9,8 @@ on:
     branches:
       - master1
       - betarelease
+  pull_request:
+    branches: [ master ]
 env:
   packageName: hello-test.sppkg
    
