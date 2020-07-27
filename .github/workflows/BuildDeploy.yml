@@ -35,7 +35,7 @@ jobs:
     - name: Install dependencies
       working-directory: ./TestPOC
       run: |
-         npm ci
+         npm install
       
                 
     - name: Build solution
