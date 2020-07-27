@@ -34,8 +34,7 @@ jobs:
       working-directory: ./TestPOC
       run: |
         npm install
-    
-                  
+                      
     - name: Build solution
       run: gulp build
       working-directory: ./TestPOC
