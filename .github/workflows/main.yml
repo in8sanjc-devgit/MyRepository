@@ -14,7 +14,9 @@ on:
     branches: [ master ]
 env:
   packageName: hello-test.sppkg
-
+defaults:
+  run:
+    working-directory: ./TestPOC
    # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -33,21 +35,17 @@ jobs:
       with:
         node-version: 10.x
         
-    - name: Install dependencies
-      working-directory: ./TestPOC
+    - name: Install dependencies     
       run: |
         npm install
                       
     - name: Build solution
       run: gulp build
-      working-directory: ./TestPOC
-      
+         
     - name: Test solution
       run: npm test
-      working-directory: ./TestPOC
-              
+                   
     - name: Bundle and package
-      working-directory: ./TestPOC
       run: |
         gulp bundle --ship
         gulp package-solution --ship
@@ -57,7 +55,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: packageFile
-        path: TestPOC/sharepoint/solution/${{ env.packageName }}
+        path: sharepoint/solution/${{ env.packageName }}
         
   deployPROD:
     runs-on: ubuntu-latest
