@@ -9,7 +9,6 @@ on:
     paths:
     - 'TestPOC/**'
     branches:
-      - master1
       - betarelease
       - master
   pull_request:
