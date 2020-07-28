@@ -18,7 +18,6 @@ This package produces the following:
 * deploy/* - all resources which should be uploaded to a CDN.
 
 ### Build options
-
 gulp clean - TODO
 gulp test - TODO
 gulp serve - TODO
