@@ -6,6 +6,8 @@ name: 3DPrototype Main CI/CD
 # events but only for the master branch
 on:
   push:
+    paths:
+    - 'TestPOC/**'
     branches:
       - master1
       - betarelease
